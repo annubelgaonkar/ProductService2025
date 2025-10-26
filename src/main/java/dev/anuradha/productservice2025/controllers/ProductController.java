@@ -3,6 +3,9 @@ package dev.anuradha.productservice2025.controllers;
 import dev.anuradha.productservice2025.dtos.CreateProductRequestDto;
 import dev.anuradha.productservice2025.models.Product;
 import dev.anuradha.productservice2025.services.ProductService;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,18 +14,18 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
+
 @RestController
 public class ProductController {
 
     //private RestTemplate restTemplate;
 
-    public ProductService productService;
+    public final ProductService productService;
+
 
     public ProductController(@Qualifier("SelfProductService") ProductService productService){
-        this.productService = productService;
-       // this.restTemplate = restTemplate;
+        this.productService=productService;
     }
-
     @GetMapping("/products")
     public List<Product> getAllProduct(){
        return productService.getAllProducts();

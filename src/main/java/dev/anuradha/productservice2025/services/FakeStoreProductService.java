@@ -39,15 +39,12 @@ public class FakeStoreProductService implements ProductService{
     @Override
     public Product getSingleProduct(long id) {
 
-//        FakeStoreProductDto fakeStoreProductDto =
-//                restTemplate.getForObject("https://fakestoreapi.com/products/1" + id,
-//                FakeStoreProductDto.class);
         ResponseEntity<FakeStoreProductDto> fakeStoreProductDtoResponseEntity =
                 restTemplate.getForEntity("https://fakestoreapi.com/products/1" + id,
                 FakeStoreProductDto.class);
 
         if(fakeStoreProductDtoResponseEntity.getStatusCode() != HttpStatus.valueOf(200)){
-          //hanlde
+          //handle
         }
 
         FakeStoreProductDto fakeStoreProductDto = fakeStoreProductDtoResponseEntity.getBody();
@@ -81,4 +78,5 @@ public class FakeStoreProductService implements ProductService{
         return fakeStoreProductDto1.toProduct();
 
     }
+
 }

@@ -7,9 +7,13 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class ProductRepository extends JpaRepository<Product, Long> {
+public interface ProductRepository extends JpaRepository<Product, Long> {
 
     @Override
     List<Product> findAll();
+
+    Product save(Product p);
+
+    Product findById(long id);
 
 }
